@@ -12,7 +12,7 @@ The solution consists of ETL processes orchestrated with Apache Airflow, data st
 ```
 project_root/
 ├── data/
-│   ├── raw/                       # Contains manually downloaded Excel from BI
+│   ├── raw/                      # Contains manually downloaded Excel from BI
 │   ├── processed/                # Output of merged Excel and transformed data
 ├── scripts/
 │   ├── transform_credit_data.py  # Merge and normalize 3 Excel sheets
