@@ -1,4 +1,4 @@
-version: '3.7'
+#version: '3.7'
 
 services:
   postgres:
@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5436:5432"
 
   minio:
     image: quay.io/minio/minio
@@ -30,7 +30,7 @@ services:
     image: metabase/metabase
     container_name: metabase
     ports:
-      - "3000:3000"
+      - "3006:3000"
     depends_on:
       - postgres
 
@@ -39,7 +39,7 @@ services:
     container_name: airflow-web
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-db/airflow
       AIRFLOW__CORE__FERNET_KEY: KxSPDAi_CYydp_ec-EHZwqUNkJ8NjTFuRFc1HZPOazc=
       AIRFLOW__WEBSERVER__SECRET_KEY: cYNAxDnFtk_69YUCImy0LplMm3dfFSbF4P4X11ASf3s
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
@@ -48,7 +48,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "8080:8080"
+      - "8086:8080"
     command: webserver
 
 volumes:
