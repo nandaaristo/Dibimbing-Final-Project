@@ -20,7 +20,9 @@ MINIO_SECRET_KEY = "admin123"
 MINIO_BUCKET = "kredit-data"
 
 # Lokasi file .sql
-SQL_PATH = "/opt/airflow/dags/sql/create_fact_credit_growth.sql"
+SQL_FACT_PATH = "/opt/airflow/dags/sql/create_fact_credit_growth.sql"
+SQL_DIM_SEKTOR_PATH = "/opt/airflow/dags/sql/create_table_dim_sektor.sql"
+SQL_DIM_BANK_PATH = "/opt/airflow/dags/sql/create_table_dim_bank_type.sql"
 
 def read_parquet_from_minio(date_str):
     client = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=False)
@@ -46,8 +48,10 @@ if __name__ == "__main__":
     try:
         today_str = datetime.today().strftime("%Y%m%d")
 
-        # STEP 1: Buat table (jika belum ada)
-        run_sql_script(SQL_PATH)
+        # STEP 1: Buat tabel dimensi dan fact (jika belum ada)
+        run_sql_script(SQL_DIM_SEKTOR_PATH)
+        run_sql_script(SQL_DIM_BANK_PATH)
+        run_sql_script(SQL_FACT_PATH)
 
         # STEP 2: Ambil data dari MinIO
         df = read_parquet_from_minio(today_str)

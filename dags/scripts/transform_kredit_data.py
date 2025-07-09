@@ -33,24 +33,25 @@ def transform_and_merge_sheets(excel_io):
     combined_df = pd.DataFrame()
 
     for sheet_name in SHEET_LIST:
+        
         df_raw = pd.read_excel(excel_io, sheet_name=sheet_name, header=None, dtype=str)
 
         # Ambil baris ke-6 sampai ke-55
         df_clean = df_raw.iloc[5:55]
 
         # ✅ Potong hanya kolom yang diperlukan
-        df_clean = df_clean.iloc[:, [0, 2, 3, 4, 5, 6, 7, 8]]
+        df_clean = df_clean.iloc[:, [2, 3, 4, 5, 6, 7, 8]]
 
         # ✅ Tambah ke combined_df
         combined_df = pd.concat([combined_df, df_clean], ignore_index=True)
 
     # ✅ Sekarang baru rename karena jumlah kolom sudah PASTI 8
     combined_df.columns = [
-        "no", "sector", "jan", "feb", "mar", "apr", "may", "kode_sektor"
+        "sector", "jan", "feb", "mar", "apr", "may", "kode_sektor"
     ]
 
-    print("Jumlah kolom setelah concat:", combined_df.shape[1])
-    print("Nama kolom sebelum rename:", combined_df.columns.tolist())
+    combined_df.reset_index(drop=True, inplace=True)
+    combined_df.insert(0, "no", combined_df.index + 1)
 
 
     # Simpan ke Parquet
