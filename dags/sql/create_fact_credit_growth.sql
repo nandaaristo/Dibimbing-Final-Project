@@ -11,5 +11,5 @@ CREATE TABLE IF NOT EXISTS fact_credit_growth (
     mom_mar NUMERIC,
     mom_apr NUMERIC,
     mom_may NUMERIC,
-    is_abnormal BOOLEAN
+    is_abnormal TEXT
 );
