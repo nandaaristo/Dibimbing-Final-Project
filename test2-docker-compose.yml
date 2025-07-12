@@ -1,0 +1,56 @@
+#version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5436:5432"
+
+  minio:
+    image: quay.io/minio/minio
+    container_name: minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: admin123
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+  metabase:
+    image: metabase/metabase
+    container_name: metabase
+    ports:
+      - "3006:3000"
+    depends_on:
+      - postgres
+
+  airflow:
+    image: apache/airflow:2.7.0
+    container_name: airflow-web
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-db/airflow
+      AIRFLOW__CORE__FERNET_KEY: KxSPDAi_CYydp_ec-EHZwqUNkJ8NjTFuRFc1HZPOazc=
+      AIRFLOW__WEBSERVER__SECRET_KEY: cYNAxDnFtk_69YUCImy0LplMm3dfFSbF4P4X11ASf3s
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    volumes:
+      - ./dags:/opt/airflow/dags
+    depends_on:
+      - postgres
+    ports:
+      - "8086:8080"
+    command: webserver
+
+volumes:
+  postgres_data:
+  minio_data:

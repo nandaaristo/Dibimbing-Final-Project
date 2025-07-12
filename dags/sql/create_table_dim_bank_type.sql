@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS dim_bank_type;
+
 CREATE TABLE IF NOT EXISTS dim_bank_type (
     bank_type INT PRIMARY KEY,
     bank_category VARCHAR

@@ -1,0 +1,173 @@
+[0m14:27:44.825640 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7772857520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7773920d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f77708ce6d0>]}
+
+
+============================== 14:27:44.883338 | 5545a69c-2df4-4ef8-8454-477d68e7769b ==============================
+[0m14:27:44.883338 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:27:44.887652 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt/credit_etl_project', 'version_check': 'True', 'debug': 'False', 'log_path': '/opt/airflow/dbt/credit_etl_project/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m14:27:44.957869 [info ] [MainThread]: dbt version: 1.8.7
+[0m14:27:44.961297 [info ] [MainThread]: python version: 3.8.17
+[0m14:27:44.963604 [info ] [MainThread]: python path: /usr/local/bin/python
+[0m14:27:44.966544 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-x86_64-with-glibc2.2.5
+[0m14:27:44.984149 [info ] [MainThread]: Using profiles dir at /opt/airflow/dbt/credit_etl_project
+[0m14:27:44.986102 [info ] [MainThread]: Using profiles.yml file at /opt/airflow/dbt/credit_etl_project/profiles.yml
+[0m14:27:44.989746 [info ] [MainThread]: Using dbt_project.yml file at /opt/airflow/dbt/credit_etl_project/dbt_project.yml
+[0m14:27:46.166981 [info ] [MainThread]: Configuration:
+[0m14:27:46.170452 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m14:27:46.172567 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m14:27:46.174451 [info ] [MainThread]: Required dependencies:
+[0m14:27:46.177695 [debug] [MainThread]: Executing "git --help"
+[0m14:27:46.211083 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m14:27:46.214043 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m14:27:46.216258 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m14:27:46.218502 [info ] [MainThread]: Profile loading failed for the following reason:
+Runtime Error
+  Could not find profile named 'credit_etl_profile'
+
+
+[0m14:27:46.224739 [info ] [MainThread]: Error from git --help: User does not have permissions for this command: "git"
+
+[0m14:27:46.229590 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 1.5762662, "process_user_time": 13.846008, "process_kernel_time": 2.181938, "process_mem_max_rss": "91608", "process_in_blocks": "3368", "process_out_blocks": "933", "command_success": false}
+[0m14:27:46.232675 [debug] [MainThread]: Command `dbt debug` failed at 14:27:46.232054 after 1.58 seconds
+[0m14:27:46.235285 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7772857520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f777192cca0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f777095f670>]}
+[0m14:27:46.239233 [debug] [MainThread]: Flushing usage events
+[0m14:31:38.019523 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0297cf7580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0295f080a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0295f08be0>]}
+
+
+============================== 14:31:38.033612 | ab8e8c09-4de4-4c15-8bfc-4646450449a4 ==============================
+[0m14:31:38.033612 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:31:38.035457 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/airflow/.dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/opt/airflow/dbt/credit_etl_project/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m14:31:38.182215 [info ] [MainThread]: dbt version: 1.8.7
+[0m14:31:38.184390 [info ] [MainThread]: python version: 3.8.17
+[0m14:31:38.188626 [info ] [MainThread]: python path: /usr/local/bin/python
+[0m14:31:38.199962 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-x86_64-with-glibc2.2.5
+[0m14:31:38.204653 [info ] [MainThread]: Using profiles dir at /home/airflow/.dbt
+[0m14:31:38.293774 [info ] [MainThread]: Using profiles.yml file at /home/airflow/.dbt/profiles.yml
+[0m14:31:38.297411 [info ] [MainThread]: Using dbt_project.yml file at /opt/airflow/dbt/credit_etl_project/dbt_project.yml
+[0m14:31:39.394961 [info ] [MainThread]: Configuration:
+[0m14:31:39.398102 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m14:31:39.400195 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m14:31:39.402055 [info ] [MainThread]: Required dependencies:
+[0m14:31:39.404709 [debug] [MainThread]: Executing "git --help"
+[0m14:31:39.430240 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m14:31:39.433855 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m14:31:39.436081 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m14:31:39.437897 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/airflow/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m14:31:39.440193 [info ] [MainThread]: Error from git --help: User does not have permissions for this command: "git"
+
+[0m14:31:39.449950 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 1.687014, "process_user_time": 15.288561, "process_kernel_time": 1.165748, "process_mem_max_rss": "91872", "process_out_blocks": "5", "command_success": false, "process_in_blocks": "0"}
+[0m14:31:39.454863 [debug] [MainThread]: Command `dbt debug` failed at 14:31:39.454448 after 1.70 seconds
+[0m14:31:39.458264 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0297cf7580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0296f23e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0299fbecd0>]}
+[0m14:31:39.459832 [debug] [MainThread]: Flushing usage events
+[0m14:32:40.601864 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0b18c2c490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0b18ea5040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0b18ea5820>]}
+
+
+============================== 14:32:40.614427 | 32d78fe9-8dcf-4fcf-a2b7-56cf7468ba42 ==============================
+[0m14:32:40.614427 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:32:40.616409 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/opt/airflow/dbt/credit_etl_project/logs', 'profiles_dir': '/home/airflow/.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m14:32:40.634064 [info ] [MainThread]: dbt version: 1.8.7
+[0m14:32:40.635418 [info ] [MainThread]: python version: 3.8.17
+[0m14:32:40.637646 [info ] [MainThread]: python path: /usr/local/bin/python
+[0m14:32:40.638817 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-x86_64-with-glibc2.2.5
+[0m14:32:40.640993 [info ] [MainThread]: Using profiles dir at /home/airflow/.dbt
+[0m14:32:40.646907 [info ] [MainThread]: Using profiles.yml file at /home/airflow/.dbt/profiles.yml
+[0m14:32:40.650607 [info ] [MainThread]: Using dbt_project.yml file at /opt/airflow/dbt/credit_etl_project/dbt_project.yml
+[0m14:32:41.584683 [info ] [MainThread]: Configuration:
+[0m14:32:41.621863 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m14:32:41.628825 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m14:32:41.637269 [info ] [MainThread]: Required dependencies:
+[0m14:32:41.644463 [debug] [MainThread]: Executing "git --help"
+[0m14:32:41.759447 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m14:32:41.763775 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m14:32:41.766820 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m14:32:41.769007 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/airflow/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m14:32:41.773270 [info ] [MainThread]: Error from git --help: User does not have permissions for this command: "git"
+
+[0m14:32:41.778895 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 1.4811794, "process_user_time": 15.615594, "process_kernel_time": 1.219692, "process_mem_max_rss": "92048", "process_out_blocks": "5", "command_success": false, "process_in_blocks": "0"}
+[0m14:32:41.782748 [debug] [MainThread]: Command `dbt debug` failed at 14:32:41.782038 after 1.48 seconds
+[0m14:32:41.789810 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0b18c2c490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0b169b7c70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0b1aefe640>]}
+[0m14:32:41.791744 [debug] [MainThread]: Flushing usage events
+[0m14:36:21.561618 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f07bfa1d220>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f07bdc380a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f07bdc38be0>]}
+
+
+============================== 14:36:21.608227 | 3d21d481-39c9-4954-b334-272918841635 ==============================
+[0m14:36:21.608227 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:36:21.638635 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/airflow/.dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': '/opt/airflow/dbt/credit_etl_project/logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt debug', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m14:36:21.677924 [info ] [MainThread]: dbt version: 1.8.7
+[0m14:36:21.680472 [info ] [MainThread]: python version: 3.8.17
+[0m14:36:21.684890 [info ] [MainThread]: python path: /usr/local/bin/python
+[0m14:36:21.687780 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-x86_64-with-glibc2.2.5
+[0m14:36:21.690024 [info ] [MainThread]: Using profiles dir at /home/airflow/.dbt
+[0m14:36:21.696365 [info ] [MainThread]: Using profiles.yml file at /home/airflow/.dbt/profiles.yml
+[0m14:36:21.699500 [info ] [MainThread]: Using dbt_project.yml file at /opt/airflow/dbt/credit_etl_project/dbt_project.yml
+[0m14:36:23.097090 [info ] [MainThread]: Configuration:
+[0m14:36:23.098523 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m14:36:23.100287 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m14:36:23.101547 [info ] [MainThread]: Required dependencies:
+[0m14:36:23.103001 [debug] [MainThread]: Executing "git --help"
+[0m14:36:23.115843 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m14:36:23.119283 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m14:36:23.121748 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m14:36:23.123421 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/airflow/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m14:36:23.124715 [info ] [MainThread]: Error from git --help: User does not have permissions for this command: "git"
+
+[0m14:36:23.130247 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 1.9535376, "process_user_time": 18.308863, "process_kernel_time": 1.44335, "process_mem_max_rss": "91704", "process_out_blocks": "5", "command_success": false, "process_in_blocks": "0"}
+[0m14:36:23.132470 [debug] [MainThread]: Command `dbt debug` failed at 14:36:23.132081 after 1.96 seconds
+[0m14:36:23.133970 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f07bfa1d220>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f07bec53e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f07c1d74cd0>]}
+[0m14:36:23.135709 [debug] [MainThread]: Flushing usage events
+[0m14:41:06.580069 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26a547c340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26a35659d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26a3654160>]}
+
+
+============================== 14:41:06.599988 | 6ca10cc8-2f25-4d34-bce4-8dd00ec57a7d ==============================
+[0m14:41:06.599988 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:41:06.602488 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/airflow/.dbt', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/credit_etl_project/logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m14:41:06.664452 [info ] [MainThread]: dbt version: 1.8.7
+[0m14:41:06.667892 [info ] [MainThread]: python version: 3.8.17
+[0m14:41:06.670275 [info ] [MainThread]: python path: /usr/local/bin/python
+[0m14:41:06.671566 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-x86_64-with-glibc2.2.5
+[0m14:41:06.673926 [info ] [MainThread]: Using profiles dir at /home/airflow/.dbt
+[0m14:41:06.695909 [info ] [MainThread]: Using profiles.yml file at /home/airflow/.dbt/profiles.yml
+[0m14:41:06.708960 [info ] [MainThread]: Using dbt_project.yml file at /opt/airflow/dbt/credit_etl_project/dbt_project.yml
+[0m14:41:07.918376 [info ] [MainThread]: Configuration:
+[0m14:41:07.953323 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m14:41:07.954696 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m14:41:07.956967 [info ] [MainThread]: Required dependencies:
+[0m14:41:07.958667 [debug] [MainThread]: Executing "git --help"
+[0m14:41:07.968401 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m14:41:07.970597 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m14:41:07.972662 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m14:41:07.973955 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/airflow/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m14:41:07.976481 [info ] [MainThread]: Error from git --help: User does not have permissions for this command: "git"
+
+[0m14:41:07.988870 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 1.7142627, "process_user_time": 13.292725, "process_kernel_time": 1.030367, "process_mem_max_rss": "91532", "process_out_blocks": "5", "command_success": false, "process_in_blocks": "0"}
+[0m14:41:07.991940 [debug] [MainThread]: Command `dbt debug` failed at 14:41:07.991597 after 1.72 seconds
+[0m14:41:07.994840 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26a547c340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26a66ccdc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26a46bb5e0>]}
+[0m14:41:07.996836 [debug] [MainThread]: Flushing usage events

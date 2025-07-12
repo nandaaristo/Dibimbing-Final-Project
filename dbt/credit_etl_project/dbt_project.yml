@@ -1,0 +1,16 @@
+name: credit_etl_project
+version: '1.0'
+config-version: 2
+
+profile: credit_etl_profile
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+models:
+  credit_etl_project:
+    staging:
+      materialized: view
+    marts:
+      materialized: table

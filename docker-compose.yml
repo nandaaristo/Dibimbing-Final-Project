@@ -1,4 +1,4 @@
-#version: '3.7'
+version: '3.7'
 
 services:
   postgres:
@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
+      POSTGRES_DB: postgres  # ✅ Ganti ke postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -35,21 +35,50 @@ services:
       - postgres
 
   airflow:
-    image: apache/airflow:2.7.0
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
     container_name: airflow-web
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-db/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/postgres  # ✅ Ganti ke postgres
       AIRFLOW__CORE__FERNET_KEY: KxSPDAi_CYydp_ec-EHZwqUNkJ8NjTFuRFc1HZPOazc=
       AIRFLOW__WEBSERVER__SECRET_KEY: cYNAxDnFtk_69YUCImy0LplMm3dfFSbF4P4X11ASf3s
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
     volumes:
       - ./dags:/opt/airflow/dags
-    depends_on:
-      - postgres
+      - ./dags/scripts:/opt/airflow/dags/scripts
+      - ./dbt:/opt/airflow/dbt
     ports:
       - "8086:8080"
+    dns:
+      - 8.8.8.8 
+      - 1.1.1.1
+    depends_on:
+      - postgres
     command: webserver
+
+  airflow-scheduler-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow-scheduler-2
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/postgres  # ✅ Ganti ke postgres
+      AIRFLOW__CORE__FERNET_KEY: KxSPDAi_CYydp_ec-EHZwqUNkJ8NjTFuRFc1HZPOazc=
+      AIRFLOW__WEBSERVER__SECRET_KEY: cYNAxDnFtk_69YUCImy0LplMm3dfFSbF4P4X11ASf3s
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dags/scripts:/opt/airflow/dags/scripts
+      - ./dbt:/opt/airflow/dbt
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    depends_on:
+      - postgres
+    command: scheduler
 
 volumes:
   postgres_data:

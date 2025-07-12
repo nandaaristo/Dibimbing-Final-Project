@@ -1,0 +1,21 @@
+[0m07:14:17.086970 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1129f3d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112cdedb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112cde9c0>]}
+
+
+============================== 07:14:17.106724 | 4a79da1d-3102-49bd-92bb-2e7c5bb17b3b ==============================
+[0m07:14:17.106724 [info ] [MainThread]: Running with dbt=1.9.4
+[0m07:14:17.107846 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/arethusaaryandhana/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m07:14:17.299306 [info ] [MainThread]: dbt version: 1.9.4
+[0m07:14:17.300038 [info ] [MainThread]: python version: 3.12.7
+[0m07:14:17.300632 [info ] [MainThread]: python path: /Applications/anaconda3/bin/python
+[0m07:14:17.301288 [info ] [MainThread]: os info: macOS-10.16-x86_64-i386-64bit
+[0m07:14:19.057408 [info ] [MainThread]: Using profiles dir at /Users/arethusaaryandhana/.dbt
+[0m07:14:19.059478 [info ] [MainThread]: Using profiles.yml file at /Users/arethusaaryandhana/.dbt/profiles.yml
+[0m07:14:19.060746 [info ] [MainThread]: Using dbt_project.yml file at /Users/arethusaaryandhana/Nanda/Dibimbing - Data Engineer Batch 10/## PROJECT ##/dbt_project.yml
+[0m07:14:19.061614 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m07:14:19.109502 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 2.5796542, "process_in_blocks": "0", "process_kernel_time": 0.609355, "process_mem_max_rss": "99422208", "process_out_blocks": "0", "process_user_time": 2.619017}
+[0m07:14:19.110873 [debug] [MainThread]: Command `dbt debug` failed at 07:14:19.110644 after 2.59 seconds
+[0m07:14:19.111646 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112c94980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112d87890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112d54920>]}
+[0m07:14:19.112412 [debug] [MainThread]: Flushing usage events
+[0m07:14:20.441195 [debug] [MainThread]: An error was encountered while trying to flush usage events

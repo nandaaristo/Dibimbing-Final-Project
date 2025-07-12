@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS dim_sektor;
+
 CREATE TABLE IF NOT EXISTS dim_sektor (
     kode_sektor INT PRIMARY KEY,
     sector_name VARCHAR

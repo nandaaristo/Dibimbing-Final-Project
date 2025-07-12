@@ -1,9 +1,10 @@
-CREATE TABLE IF NOT EXISTS fact_credit_growth (
+CREATE TABLE IF NOT EXISTS dm_fact_credit_growth_clean (
     no INTEGER,
     date DATE,
-    kode_sektor TEXT,
+    kode_sektor INT,
     sector TEXT,
     bank_type TEXT,
+    kode_bank INT,
     jan NUMERIC,
     feb NUMERIC,
     mar NUMERIC,
@@ -15,5 +16,4 @@ CREATE TABLE IF NOT EXISTS fact_credit_growth (
     mom_may NUMERIC,
     is_abnormal TEXT
 );
-
 

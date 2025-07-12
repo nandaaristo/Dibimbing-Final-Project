@@ -9,7 +9,7 @@ POSTGRES_HOST = "postgres"
 POSTGRES_PORT = "5432"
 POSTGRES_USER = "airflow"
 POSTGRES_PASSWORD = "airflow"
-POSTGRES_DB = "postgres"
+POSTGRES_DB = "airflow"
 TABLE_NAME = "fact_credit_growth"
 
 # 🔐 MinIO config
@@ -32,7 +32,7 @@ def load_fact_credit_growth_clean():
             f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
         )
         with engine.connect() as conn:
-            for sql_path in [SQL_DIM_SEKTOR_PATH, SQL_DIM_BANK_PATH, SQL_FACT_PATH, SQL_FACT_CLEAN_PATH]:
+            for sql_path in [SQL_DIM_SEKTOR_PATH, SQL_DIM_BANK_PATH, SQL_FACT_CLEAN_PATH]:
                 with open(sql_path, "r") as f:
                     conn.execute(text(f.read()))
                 print(f"✅ Executed SQL: {sql_path}")
@@ -50,18 +50,9 @@ def load_fact_credit_growth_clean():
         df["date"] = today
         df["is_abnormal"] = df["is_abnormal"].apply(lambda x: "TRUE" if x else "FALSE")
 
-        # STEP 4: Hapus data existing dengan date = today
-        print(f"🗑️ Deleting existing records in {TABLE_NAME} with date = {today} ...")
-        with engine.begin() as conn:
-            conn.execute(text(f"DELETE FROM {TABLE_NAME} WHERE date = :date"), {"date": today})
-        print("✅ Deleted old records.")
-
-        # STEP 5: Load ke PostgreSQL
+        # STEP 4: Load ke PostgreSQL
         df.to_sql(TABLE_NAME, engine, if_exists="append", index=False)
         print(f"✅ Loaded data into PostgreSQL table: {TABLE_NAME}")
 
     except Exception as e:
         print(f"🚨 Error in load_fact_credit_growth_clean: {e}")
-
-if __name__ == "__main__":
-    load_fact_credit_growth_clean()

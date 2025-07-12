@@ -1,10 +1,9 @@
-# Requirements for Airflow and project dependencies
-apache-airflow==2.7.0
-apache-airflow-providers-postgres
-apache-airflow-providers-amazon  # optional if you later connect to S3
 pandas
-openpyxl
-xlrd
-minio
+sqlalchemy
 psycopg2-binary
-requests
+minio
+openpyxl
+pyarrow
+dbt-core
+dbt-postgres
+xlrd>=2.0.1
