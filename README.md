@@ -15,12 +15,19 @@ project_root/
 │   ├── scripts/
 │   │   ├── scrape_bi_excel.py       # Scrape Excel from BI and upload to MinIO
 │   │   ├── transform_kredit_data.py # Read from MinIO and normalize 3 Excel sheets
-│   │   ├── analyze_kredit_growth.py # Calculate MoM and flag sectoral risk
+│   │   ├── transform_clean_fact_table.py # Insert data from staging to Data Mart and clean the data
+│   │   ├── transform_mom_flag.py    # Calculate MoM and flag sectoral risk and upload to MinIO
 │   │   └── load_to_postgres.py      # Load transformed results to PostgreSQL
 │   └── sql/
-│       └── create_table_credit_growth.sql  # Table schema for fact_credit_growth
+│       └── create_fact_credit_growth.sql  # Table schema for fact_credit_growth
+│       └── create_fact_credit_growth_clean.sql  # Table schema for dm_fact_credit_growth_clean
+│       └── create_fact_credit_growth_long.sql  # Table schema for dm_fact_credit_growth_long
+│       └── create_table_dim_bank_type.sql  # Table schema for dim_bank_type
+│       └── create_table_dim_sektor.sql  # Table schema for dim_sektor
 ├── data/                             # (Optional local folder for testing)
+├── logs/                             # logs
 ├── docker-compose.yml                # Multi-service environment
+├── Dockerfile.airflow                 # Airflow Environment
 ├── requirements.txt                  # Python dependencies for ETL
 ├── README.md                         # Project documentation
 ```
