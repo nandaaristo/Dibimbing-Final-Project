@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: postgres  # ✅ Ganti ke postgres
+      POSTGRES_DB: postgres  
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -41,7 +41,7 @@ services:
     container_name: airflow-web
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/postgres  # ✅ Ganti ke postgres
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/postgres
       AIRFLOW__CORE__FERNET_KEY: KxSPDAi_CYydp_ec-EHZwqUNkJ8NjTFuRFc1HZPOazc=
       AIRFLOW__WEBSERVER__SECRET_KEY: cYNAxDnFtk_69YUCImy0LplMm3dfFSbF4P4X11ASf3s
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
@@ -65,7 +65,7 @@ services:
     container_name: airflow-scheduler-2
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/postgres  # ✅ Ganti ke postgres
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/postgres  
       AIRFLOW__CORE__FERNET_KEY: KxSPDAi_CYydp_ec-EHZwqUNkJ8NjTFuRFc1HZPOazc=
       AIRFLOW__WEBSERVER__SECRET_KEY: cYNAxDnFtk_69YUCImy0LplMm3dfFSbF4P4X11ASf3s
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
