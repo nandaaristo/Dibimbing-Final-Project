@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, text
 import psycopg2
+import pandas as pd
 
 # PostgreSQL config
 POSTGRES_HOST = "postgres"
@@ -71,6 +72,65 @@ def cleanup_and_load_fact_clean():
             """))
 
             print("✅ Data cleanup and load completed.")
+
+            # 🔁 Transform to long format and insert to new table
+            print("🔁 Transforming to long format...")
+
+            df_wide = pd.read_sql("SELECT * FROM dm_fact_credit_growth_clean WHERE date = CURRENT_DATE", conn)
+
+            value_vars = ["jan", "feb", "mar", "apr", "may"]
+            mom_vars = ["mom_feb", "mom_mar", "mom_apr", "mom_may"]
+
+            # Mapping untuk mom column dari month
+            mom_lookup = {
+                "feb": "mom_feb",
+                "mar": "mom_mar",
+                "apr": "mom_apr",
+                "may": "mom_may"
+            }
+
+            # Buat dataframe mom
+            df_mom = pd.melt(
+                df_wide,
+                id_vars=["kode_sektor", "sector", "bank_type", "kode_bank", "date", "is_abnormal"],
+                value_vars=["mom_feb", "mom_mar", "mom_apr", "mom_may"],
+                var_name="mom_month",
+                value_name="mom"
+            )
+
+            # Bersihkan nama bulan di kolom mom_month agar bisa di-join
+            df_mom["month"] = df_mom["mom_month"].str.replace("mom_", "")
+
+            # Transform wide → long
+            df_long = pd.melt(
+                df_wide,
+                id_vars=["kode_sektor", "sector", "bank_type", "kode_bank", "date", "is_abnormal"],
+                value_vars=["jan", "feb", "mar", "apr", "may"],
+                var_name="month",
+                value_name="credit_growth"
+            )
+
+            # Join nilai mom berdasarkan 'month' dan key lainnya
+            df_long = df_long.merge(
+                df_mom.drop(columns="mom_month"),
+                on=["kode_sektor", "sector", "bank_type", "kode_bank", "date", "is_abnormal", "month"],
+                how="left"
+            )
+
+             # 🧠 is_abnormal jika mom > 15%
+            df_long["is_abnormal"] = df_long["mom"].gt(15)
+
+            # Tambahkan no unik
+            df_long.reset_index(drop=True, inplace=True)
+            df_long["no"] = df_long.index + 1
+
+            # Buang data hari ini di tabel long
+            conn.execute(text("DELETE FROM dm_fact_credit_growth_long WHERE date = CURRENT_DATE"))
+
+            # Simpan ke tabel long
+            df_long.to_sql("dm_fact_credit_growth_long", engine, if_exists="append", index=False)
+            print("✅ Inserted long format data to dm_fact_credit_growth_long")
+
 
     except Exception as e:
         print(f"🚨 Error in cleanup_and_load_fact_clean: {e}")

@@ -23,6 +23,7 @@ SQL_DIM_SEKTOR_PATH = "/opt/airflow/dags/sql/create_table_dim_sektor.sql"
 SQL_DIM_BANK_PATH = "/opt/airflow/dags/sql/create_table_dim_bank_type.sql"
 SQL_FACT_CLEAN_PATH = "/opt/airflow/dags/sql/create_fact_credit_growth_clean.sql"
 SQL_FACT_PATH = "/opt/airflow/dags/sql/create_fact_credit_growth.sql"
+SQL_FACT_LONG_PATH = "/opt/airflow/dags/sql/create_fact_credit_growth_long.sql"
 
 def load_fact_credit_growth_clean():
     try:
@@ -32,7 +33,7 @@ def load_fact_credit_growth_clean():
             f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
         )
         with engine.connect() as conn:
-            for sql_path in [SQL_DIM_SEKTOR_PATH, SQL_DIM_BANK_PATH, SQL_FACT_PATH, SQL_FACT_CLEAN_PATH]:
+            for sql_path in [SQL_DIM_SEKTOR_PATH, SQL_DIM_BANK_PATH, SQL_FACT_PATH, SQL_FACT_CLEAN_PATH, SQL_FACT_LONG_PATH]:
                 with open(sql_path, "r") as f:
                     conn.execute(text(f.read()))
                 print(f"✅ Executed SQL: {sql_path}")
