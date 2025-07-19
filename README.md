@@ -11,25 +11,25 @@ The solution consists of ETL processes orchestrated with Apache Airflow, data st
 ```
 project_root/
 ├── dags/
-│   ├── dag_credit_pipeline.py       # Apache Airflow DAG for scheduling the pipeline
+│   ├── dag_credit_pipeline.py                  # Apache Airflow DAG for scheduling the pipeline
 │   ├── scripts/
-│   │   ├── scrape_bi_excel.py       # Scrape Excel from BI and upload to MinIO
-│   │   ├── transform_kredit_data.py # Read from MinIO and normalize 3 Excel sheets
-│   │   ├── transform_clean_fact_table.py # Insert data from staging to Data Mart and clean the data
-│   │   ├── transform_mom_flag.py    # Calculate MoM and flag sectoral risk and upload to MinIO
-│   │   └── load_to_postgres.py      # Load transformed results to PostgreSQL
+│   │   ├── scrape_bi_excel.py                  # Scrape Excel from BI and upload to MinIO
+│   │   ├── transform_kredit_data.py            # Read from MinIO and normalize 3 Excel sheets
+│   │   ├── transform_clean_fact_table.py       # Insert data from staging to Data Mart and clean the data
+│   │   ├── transform_mom_flag.py               # Calculate MoM and flag sectoral risk and upload to MinIO
+│   │   └── load_to_postgres.py                 # Load transformed results to PostgreSQL
 │   └── sql/
-│       └── create_fact_credit_growth.sql  # Table schema for fact_credit_growth
-│       └── create_fact_credit_growth_clean.sql  # Table schema for dm_fact_credit_growth_clean
+│       └── create_fact_credit_growth.sql       # Table schema for fact_credit_growth
+│       └── create_fact_credit_growth_clean.sql # Table schema for dm_fact_credit_growth_clean
 │       └── create_fact_credit_growth_long.sql  # Table schema for dm_fact_credit_growth_long
-│       └── create_table_dim_bank_type.sql  # Table schema for dim_bank_type
-│       └── create_table_dim_sektor.sql  # Table schema for dim_sektor
-├── data/                             # (Optional local folder for testing)
-├── logs/                             # logs
-├── docker-compose.yml                # Multi-service environment
-├── Dockerfile.airflow                 # Airflow Environment
-├── requirements.txt                  # Python dependencies for ETL
-├── README.md                         # Project documentation
+│       └── create_table_dim_bank_type.sql      # Table schema for dim_bank_type
+│       └── create_table_dim_sektor.sql         # Table schema for dim_sektor
+├── data/                                       # (Optional local folder for testing)
+├── logs/                                       # logs
+├── docker-compose.yml                          # Multi-service environment
+├── Dockerfile.airflow                          # Airflow Environment
+├── requirements.txt                            # Python dependencies for ETL
+├── README.md                                   # Project documentation
 ```
 
 ---
@@ -95,10 +95,10 @@ project_root/
 +-------------+--------------+
               |
               v
-+----------------------------+
-| PostgreSQL Data Warehouse |
-| - fact_credit_growth      |
-+-------------+--------------+
++------------------------------+
+| PostgreSQL Data Warehouse    |
+| - dm_fact_credit_growth_long |
++-------------+----------------+
               |
               v
 +----------------------------+
